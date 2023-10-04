@@ -1,0 +1,18 @@
+{% load socialaccount %}
+<nav>
+    <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'account_logout' %}">logout</a></li>
+        {% else %}
+        <li><a href="{% url 'account_login' %}">login</a></li>
+        <li><a href="{% url 'account_signup' %}">sign up</a></li>
+        {% endif %}
+    </ul>
+</nav>
+<h3>Home page</h3>
+{% if user.is_authenticated %}
+    <p>Hi {{ user.username }}!</p>
+    <p><a href="">Connect with Facebook</a></p>
+{% else %}
+    <p>You are not logged in</p>
+{% endif %}

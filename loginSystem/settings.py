@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'base.apps.BaseConfig',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -50,7 +52,7 @@ ROOT_URLCONF = 'loginSystem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -143,3 +145,15 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
     }
 }
+
+LOGIN_REDIRECT_URL = '/'  # This is where the user will be redirected after logging in
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Optional: Skip email verification for social accounts
+SOCIALACCOUNT_QUERY_EMAIL = True  # Optional: Request email address from social accounts
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'localhostexample1@gmail.com'
+EMAIL_HOST_PASSWORD = 'Localhost@google23'
+DEFAULT_FROM_EMAIL = 'localhostexample1@gmail.com'
